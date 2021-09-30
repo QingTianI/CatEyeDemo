@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.jetpackdemo.util.UtilsKt" />
+
+
+
+        <variable
+            name="presenter"
+            type="com.example.jetpackdemo.helper.PresenterProxyClick" />
+
+
+        <variable
+            name="data"
+            type="com.example.jetpackdemo.data.model.bean.MovieBasicData.Movie" />
+
+
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:id="@+id/fl_hot_movie"
+                    android:layout_width="90dp"
+                    android:layout_height="140dp"
+                    android:layout_alignParentLeft="true">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_img_pic"
+                        imageUrl="@{UtilsKt.resetPicUrl(data.img)}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="@{(v)->presenter.onClick(v)}"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_video_play" />
+                </FrameLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/ll_hot_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_nm"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@{data.nm}"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        tools:text="怒火重案" />
+
+                    <TextView
+                        android:id="@+id/tv_enm"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@{data.enm}"
+                        android:textColor="#C8C6C6"
+                        android:textSize="@dimen/sp_14"
+                        tools:text="怒火重案" />
+
+
+                    <TextView
+                        android:id="@+id/tv_cat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@{data.cat}"
+                        android:textColor="#C8C6C6"
+                        android:textSize="14sp"
+                        tools:text="HHH" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_pubDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:textColor="@color/Color_C8C6C6"
+                            android:textSize="14sp"
+                            tools:text="2021-04-17中国大陆上映"
+                            android:text="@{data.pubDesc}"/>
+
+                        <TextView
+                            android:id="@+id/tv_dur"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:maxLines="1"
+                            android:textColor="#C8C6C6"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                    <!--想看-->
+                    <include layout="@layout/layout_like_watch" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

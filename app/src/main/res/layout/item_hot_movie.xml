@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.jetpackdemo.util.UtilsKt" />
+
+        <variable
+            name="data"
+            type="com.example.jetpackdemo.data.model.bean.HotMovieList.Hot"/>
+
+        <variable
+            name="presenter"
+            type="com.example.jetpackdemo.ui.adapter.ItemMovieHotProvider.Presenter"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp">
+
+
+        <!--当前热映电影-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:id="@+id/fl_hot_movie"
+                    android:layout_width="75dp"
+                    android:layout_height="95dp"
+                    android:layout_alignParentLeft="true">
+
+                    <ImageView
+                        android:id="@+id/iv_img"
+                        imageUrl="@{UtilsKt.resetPicUrl(data.img)}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:src="@drawable/icon_default" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_video_play" />
+                </FrameLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="114dp"
+                    android:layout_marginLeft="10dp"
+                    android:paddingBottom="5dp">
+
+                    <LinearLayout
+                        android:id="@+id/ll_movie_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/ll_hot_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:id="@+id/tv_nm"
+                                android:layout_width="120dp"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="@{data.nm}"
+                                android:textColor="@color/defaultText_color"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                tools:text="太空旅客" />
+
+
+                            <ImageView
+                                android:id="@+id/iv_movie_type"
+                                android:layout_width="37dp"
+                                android:layout_height="20dp"
+                               tools:src="@drawable/ic_3d_imax"
+                                imageUrl="@{presenter.is2Dor3D(data.ver)}"/>
+
+
+                        </LinearLayout>
+
+
+                        <!--电影评分-->
+
+                        <LinearLayout
+                            android:id="@+id/lv_sc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ll_hot_title"
+                            android:visibility="visible">
+
+
+                            <TextView
+                                android:id="@+id/tv_sc_desc_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                tools:text="猫眼评分" />
+
+                            <TextView
+                                android:id="@+id/tv_sc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:textColor="#FFC107"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                tools:text="8.9"
+                                android:text="@{UtilsKt.toString(data.sc)}"/>
+
+
+                        </LinearLayout>
+
+
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_desc"
+                                android:layout_width="220dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/lv_sc"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="@{data.desc}"
+                                android:textColor="@color/defaultText_color"
+                                tools:text="外星来访客，目的难预测" />
+
+                            <TextView
+                                android:id="@+id/tv_showInfo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tv_desc"
+                                android:text="@{data.showInfo}"
+                                android:textColor="@color/defaultText_color"
+                                tools:text="今天138家影院放映1152场" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <Button
+                        android:id="@+id/btn_buy"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="65dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/shape_button_buy_unpressed"
+                        android:text="购票"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.8dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/default_divier_line" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</layout>

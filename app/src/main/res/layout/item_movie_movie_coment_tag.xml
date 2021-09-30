@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.jetpackdemo.data.model.bean.MovieCommentTag.Data" />
+        <variable
+            name="presenter"
+            type="com.example.jetpackdemo.ui.adapter.MovieCommentTagAdapter.Presenter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_tagName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/tv_style_viewer_comment"
+            android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:paddingLeft="8dp"
+            android:paddingTop="5dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="5dp"
+            tools:text="购票好评 3w"
+            android:text="@{presenter.tvCount(data.tagName,data.count)}"
+            android:textColor="@color/color_000"
+            android:textSize="@dimen/sp_14"
+            android:layout_marginTop="7dp"
+
+            />
+
+
+    </LinearLayout>
+</layout>

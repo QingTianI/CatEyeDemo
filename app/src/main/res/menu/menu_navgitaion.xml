@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_home"
+        android:icon="@drawable/home_selector"
+        android:title="首页" />
+    <item
+        android:id="@+id/menu_cinema"
+        android:checked="true"
+        android:icon="@drawable/cenema_seleteor"
+        android:title="电影院" />
+    <item
+        android:id="@+id/menu_small_video"
+        android:icon="@drawable/player_seletor"
+        android:title="小视频" />
+    <item
+        android:id="@+id/menu_show"
+        android:icon="@drawable/show_seletor"
+        android:title="演出"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_mine"
+        android:icon="@drawable/mine_selector"
+        android:title="我的" />
+
+</menu>

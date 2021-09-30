@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.jetpackdemo.util.UtilsKt" />
+
+        <variable
+            name="data"
+            type="com.example.jetpackdemo.data.model.bean.CinemaList.Cinema" />
+
+        <variable
+            name="presenter"
+            type="com.example.jetpackdemo.ui.adapter.MovieTheatreAdapter.Presenter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_nm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{data.nm}"
+                android:textColor="@color/defaultText_color"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="太平洋影城（北欧知识城店)" />
+
+
+            <LinearLayout
+                android:id="@+id/lv_show_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true">
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@{UtilsKt.toString(data.price)}"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    tools:text="19.9元" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="起"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+            <!--        NoPrice-->
+
+            <LinearLayout
+                android:id="@+id/lv_hide_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:visibility="gone">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="参考价:暂无"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <!--第二行-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+
+            <TextView
+                android:id="@+id/tv_addr"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{data.addr}"
+                android:textColor="@color/color_66666"
+                android:textSize="16sp"
+                tools:text="新都区斑竹园镇中利路169号北欧商业广场4号楼4楼" />
+
+
+        </RelativeLayout>
+
+        <!--    第三行-->
+
+        <LinearLayout
+            android:id="@+id/lv_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+
+        </LinearLayout>
+
+        <!--    第四行-->
+        <TextView
+            android:id="@+id/tv_platformActivityTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawableLeft="@drawable/ic_label_promotion"
+            android:drawablePadding="6dp"
+            android:text="@{presenter.tag(data.promotion.platformActivityTag)}"
+            android:visibility="@{presenter.tagVisibility(data.promotion.platformActivityTag)}"
+            android:textSize="16sp"
+            tools:text="1921等4部影片特惠" />
+
+        <!--    第五行-->
+        <TextView
+            android:id="@+id/tv_cardPromotionTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawableLeft="@drawable/ic_label_card"
+            android:drawablePadding="6dp"
+            tools:text="开卡特惠，16.9元起开卡"
+            android:text="@{presenter.tag(data.promotion.platformActivityTag)}"
+            android:visibility="@{presenter.tagVisibility(data.promotion.platformActivityTag)}"
+            android:textSize="16sp" />
+
+
+        <!--    分割线-->
+        <View
+            style="@style/Function_iv_divider_horizontal"
+            android:layout_marginTop="20dp" />
+    </LinearLayout>
+</layout>

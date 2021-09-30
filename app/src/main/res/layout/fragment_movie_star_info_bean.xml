@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.jetpackdemo.viewmodel.fragment.MovieStarInfoBeanViewModel" />
+
+        <variable
+            name="present"
+            type="com.example.jetpackdemo.helper.PresenterProxyClick" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nestedScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+                    <include
+                        android:id="@+id/layout_movie_info_header"
+                        layout="@layout/layout_movie_info_header"
+                        bind:vm="@{vm}"/>
+
+                    <!--          介绍        -->
+
+                    <include
+                        android:id="@+id/layout_movie_star_introduce"
+                        layout="@layout/layout_movie_star_introduce"
+                        bind:present="@{present}"
+                        bind:vm="@{vm}"/>
+
+
+                    <!--          代表作品          -->
+                    <include
+                        android:id="@+id/layout_star_movie"
+                        layout="@layout/layout_star_movie"
+                        bind:vm="@{vm}"/>
+
+                    <!--                              相册        -->
+
+                    <include
+                        android:id="@+id/layout_star_movie_album"
+                        layout="@layout/layout_star_movie_album"
+                        bind:vm="@{vm}"/>
+
+                    <!--                             相关影人        -->
+                    <include layout="@layout/layout_star_related_people"
+                        android:id="@+id/layout_star_related_people"/>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+        <include
+            android:id="@+id/layout_movie_star_title"
+            layout="@layout/layout_movie_star_title" />
+
+
+    </FrameLayout>
+</layout>

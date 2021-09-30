@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.jetpackdemo.util.UtilsKt" />
+
+        <variable
+            name="data"
+            type="com.example.jetpackdemo.data.model.bean.MovieResource.Data" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+
+            <View style="@style/Function_iv_divider_horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="1dp">
+
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout_relatedCompany"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+
+                    >
+
+                    <ImageView
+                        android:id="@+id/iv_img"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        tools:src="@drawable/relatedcompanie"
+                        imageUrl="@{UtilsKt.resetPicUrl(data.img)}"/>
+
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:text="@{data.title}"
+                        android:textColor="@color/color_212121"
+                        android:textSize="16sp"
+                        tools:text="出品发行" />
+
+                    <TextView
+                        android:id="@+id/tv_content"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="30dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@{data.content}"
+                        android:textColor="@color/defaultText_color"
+                        android:textSize="@dimen/sp_14"
+                        tools:text="中国电影股份有限公司" />
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/iv_divier"
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="185dp"
+                android:background="@color/default_divier_line" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.jetpackdemo.viewmodel.fragment.MovieStarInfoBeanViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_141414"
+        android:orientation="vertical">
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+            <include
+                android:id="@+id/layout_movie_photo_small"
+                layout="@layout/layout_movie_photo_small"
+                bind:vm="@{vm}" />
+
+
+            <include
+                android:id="@+id/layout_movie_photo_big"
+                layout="@layout/layout_movie_photo_big"
+                bind:vm="@{vm}" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

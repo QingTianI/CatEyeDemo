@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <cn.jzvd.JzvdStd
+                android:id="@+id/jzvd_player"
+                android:layout_width="match_parent"
+                android:layout_height="250dp" />
+
+
+            <!--            <include layout="@layout/include_title" />-->
+        </RelativeLayout>
+
+        <!--   简介  评论-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <com.flyco.tablayout.SlidingTabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:tl_indicator_color="@color/colorAccent"
+                app:tl_indicator_height="3dp"
+                app:tl_indicator_width="30dp"
+                app:tl_tab_space_equal="true"
+                app:tl_textBold="BOTH"
+                app:tl_textSelectColor="#000"
+                app:tl_textUnselectColor="@color/color_BDBDBD"
+                app:tl_textsize="18sp"
+
+                />
+
+        </RelativeLayout>
+
+        <View style="@style/Function_iv_divider_horizontal" />
+
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+</layout>

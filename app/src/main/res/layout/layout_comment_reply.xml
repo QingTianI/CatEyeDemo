@@ -1,0 +1,914 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.jetpackdemo.util.UtilsKt"/>
+        <variable
+            name="isShow"
+            type="Boolean"/>
+        <variable
+            name="data"
+            type="com.example.jetpackdemo.data.model.bean.MovieCommentTagDetailed.Cmt" />
+        <variable
+            name="presenter"
+            type="com.example.jetpackdemo.MovieShortCommentDetailedAdapter.Presenter" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="50dp">
+
+        <com.example.jetpackdemo.custom.ProgressLayout
+            android:id="@+id/progressLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_cardview"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <!--               顶部-->
+
+                <LinearLayout
+                    android:id="@+id/lv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:text="短评详情"
+                            android:textColor="#000"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/iv_cancel"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/delete"
+                            android:onClick="@{(v)->presenter.onClick(v)}"/>
+                    </LinearLayout>
+
+
+                    <View
+                        style="@style/Function_iv_divider_horizontal"
+                        android:layout_marginTop="15dp" />
+                    <!--全部评论-->
+                </LinearLayout>
+
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/lv_bottom"
+                    android:layout_below="@id/lv_title">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/lv_top"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp">
+
+                            <RelativeLayout
+                                android:id="@+id/rl_follow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/iv_avatarurl"
+                                    android:layout_width="42dp"
+                                    android:layout_height="42dp"
+                                    tools:src="@drawable/photo"
+                                    android:scaleType="centerCrop"
+                                    imageUrl="@{data.avatarurl}"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="35dp"
+                                    android:background="@drawable/tv_shape_watch"
+                                    android:paddingLeft="3dp"
+                                    android:paddingTop="1dp"
+                                    android:paddingRight="3dp"
+                                    android:paddingBottom="1dp"
+                                    android:text="+关注"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+                            <!--姓名-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+
+                                    <TextView
+                                        android:id="@+id/tv_nickName"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        tools:text="天空之外"
+                                        android:text="@{data.nickName}"
+                                        android:textColor="#000"
+                                        android:textSize="16sp" />
+
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginLeft="10dp"
+                                            android:background="@drawable/tv_shape_level"
+                                            android:paddingLeft="5dp"
+                                            android:paddingTop="2dp"
+                                            android:paddingRight="5dp"
+                                            android:paddingBottom="2dp">
+
+                                            <TextView
+                                                android:id="@+id/tv_userLevel"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                tools:text="Lv2"
+                                                android:text='@{"lv" + data.userLevel}'
+                                                android:textSize="12sp" />
+
+                                            <ImageView
+                                                android:id="@+id/iv_img"
+                                                android:layout_width="20dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_marginLeft="2dp"
+                                                tools:src="@drawable/level_2"
+                                                imageUrl="@{UtilsKt.setUserLevel(data.userLevel)}"/>
+
+
+                                        </LinearLayout>
+
+                                        <ImageView
+                                            android:id="@+id/iv_report"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentRight="true"
+                                            android:scaleType="centerCrop"
+                                            android:src="@drawable/shar_3" />
+                                    </RelativeLayout>
+
+
+                                </LinearLayout>
+                                <!--评分-->
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:orientation="horizontal">
+
+
+                                    <LinearLayout
+                                        android:id="@+id/lv_level_5"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        tools:visibility="gone"
+                                        android:visibility="@{UtilsKt.setLevelVisibility(5 == UtilsKt.toInt(data.score))}">
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_select" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_select" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_select" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_select" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_select" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/lv_level_4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        tools:visibility="gone"
+                                        android:visibility="@{UtilsKt.setLevelVisibility(4 == UtilsKt.toInt(data.score))}">
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_select" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_select" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_select" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_select" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_unselect" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/lv_level_3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        tools:visibility="gone"
+                                        android:visibility="@{UtilsKt.setLevelVisibility(3 == UtilsKt.toInt(data.score))}">
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_select" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_select" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_select" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_unselect" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_unselect" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/lv_level_2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        tools:visibility="gone"
+                                        android:visibility="@{UtilsKt.setLevelVisibility(2 == UtilsKt.toInt(data.score))}">
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_select" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_select" />
+
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_unselect" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_unselect" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_unselect" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/lv_level_1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        tools:visibility="gone"
+                                        android:visibility="@{UtilsKt.setLevelVisibility(1 == UtilsKt.toInt(data.score))}">
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_select" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_unselect" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_unselect" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_unselect" />
+
+                                        <ImageView
+                                            android:layout_width="18dp"
+                                            android:layout_height="18dp"
+                                            android:src="@drawable/star_unselect" />
+
+                                    </LinearLayout>
+
+
+                                    <TextView
+                                        android:id="@+id/tv_score"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="10dp"
+                                        tools:text="8分"
+                                        android:text="@{UtilsKt.toString(data.score * 2)}"
+                                        android:textColor="@color/color_score"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp">
+
+                                    <TextView
+                                        android:id="@+id/tv_content"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        tools:text="也就那样.."
+                                        android:text="@{data.content}"
+                                        android:textColor="@color/defaultText_color"
+                                        android:textSize="16sp" />
+
+
+                                </LinearLayout>
+
+                                <!--            回复-->
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="15dp">
+
+
+                                    <LinearLayout
+                                        android:id="@+id/lv_reply"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1">
+
+                                        <TextView
+                                            android:id="@+id/tv_reply"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/tv_shape_reply"
+                                            android:paddingLeft="10dp"
+                                            android:paddingTop="3dp"
+                                            android:paddingRight="10dp"
+                                            android:paddingBottom="3dp"
+                                            tools:text="1 回复"
+                                            android:text="@{presenter.replyCount(data.reply)}"
+                                            android:textColor="#508AB9"
+                                            android:textSize="14sp" />
+
+
+                                        <TextView
+                                            android:id="@+id/tv_created"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_weight="1"
+                                            tools:text="刚刚"
+                                            android:text="@{presenter.setCreatedTime(data.created)}"
+                                            android:textSize="14sp" />
+                                    </LinearLayout>
+
+
+                                    <FrameLayout
+                                        android:id="@+id/fl"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView
+                                            android:id="@+id/tv_show_unClick"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/tv_shape_thumb"
+                                            android:drawableRight="@drawable/ic_grey_thumb_32"
+                                            android:drawablePadding="5dp"
+                                            android:gravity="center_vertical"
+                                            android:paddingLeft="12dp"
+                                            android:paddingTop="5dp"
+                                            android:paddingRight="12dp"
+                                            android:paddingBottom="5dp"
+                                            tools:text="抢首赞"
+                                            android:text="@{presenter.firstApprove(data.approve)}"
+                                            android:visibility="@{presenter.showUnClickVisibility(isShow)}"
+                                            android:textSize="13sp" />
+
+                                        <TextView
+                                            android:id="@+id/tv_show_click"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/tv_shape_thumb"
+                                            android:drawableRight="@drawable/ic_red_humb_32"
+                                            android:drawablePadding="10dp"
+                                            android:gravity="center_vertical"
+                                            android:paddingLeft="12dp"
+                                            android:paddingTop="5dp"
+                                            android:paddingRight="12dp"
+                                            android:paddingBottom="5dp"
+                                            android:textColor="@color/color_E40700"
+                                            android:textSize="13sp"
+                                            tools:text="0"
+                                            android:text="@{presenter.showClickApprove(data.approve)}"
+                                            tools:visibility="gone"
+                                            android:visibility="@{presenter.showClickVisibility(isShow)}"
+                                            />
+                                    </FrameLayout>
+
+
+                                </LinearLayout>
+
+                                <View
+                                    style="@style/Function_iv_divider_horizontal"
+                                    android:layout_marginTop="5dp" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/lv_hide_reply"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_below="@id/lv_top"
+                            android:layout_marginTop="15dp"
+                            android:orientation="vertical"
+                            android:visibility="visible">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="全部回复"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center">
+
+                                    <TextView
+                                        android:id="@+id/tv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="暂无回复,"
+                                        android:textSize="16sp" />
+
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_toRightOf="@id/tv"
+                                        android:gravity="center_horizontal"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:text="说说你的看法"
+                                            android:textColor="#508AB9"
+                                            android:textSize="16sp" />
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="1dp"
+                                            android:layout_marginTop="-1.5dp"
+                                            android:layout_toRightOf="@id/tv"
+                                            android:background="#508AB9" />
+
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+                        <!--            center-->
+                        <LinearLayout
+                            android:id="@+id/lv_show_reply"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lv_top"
+                            android:layout_marginTop="15dp"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="全部回复"
+                                    android:textColor="#000"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tv_reply_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="(1)"
+                                    android:textColor="@color/defaultText_color"
+                                    android:textSize="16sp"
+                                    tools:ignore="DuplicateIds" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="20dp">
+
+
+                                    <de.hdodenhof.circleimageview.CircleImageView
+                                        android:id="@+id/iv_avatarurl_reply"
+                                        android:layout_width="42dp"
+                                        android:layout_height="42dp"
+                                        android:src="@drawable/photo" />
+
+
+                                    <!--姓名-->
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:orientation="vertical">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+
+
+                                            <TextView
+                                                android:id="@+id/tv_nickName_reply"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="天空之外"
+                                                android:textColor="#000"
+                                                android:textSize="16sp" />
+
+
+                                            <RelativeLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content">
+
+                                                <LinearLayout
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center_vertical"
+                                                    android:layout_marginLeft="10dp"
+                                                    android:background="@drawable/tv_shape_level"
+                                                    android:paddingLeft="5dp"
+                                                    android:paddingTop="2dp"
+                                                    android:paddingRight="5dp"
+                                                    android:paddingBottom="2dp">
+
+                                                    <TextView
+                                                        android:id="@+id/tv_userLevel_reply"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:text="Lv2"
+                                                        android:textSize="12sp" />
+
+                                                    <ImageView
+                                                        android:id="@+id/iv_img_reply"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_gravity="center_vertical"
+                                                        android:layout_marginLeft="2dp"
+                                                        android:src="@drawable/level_2" />
+
+
+                                                </LinearLayout>
+
+                                                <ImageView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="25dp"
+                                                    android:layout_alignParentRight="true"
+                                                    android:layout_centerVertical="true"
+                                                    android:scaleType="centerCrop"
+                                                    android:src="@drawable/ic_grey_thumb_32" />
+
+                                            </RelativeLayout>
+
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp">
+
+                                            <TextView
+                                                android:id="@+id/tv_content_reply"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:maxLines="7"
+                                                android:text="也就那样.."
+                                                android:textColor="@color/defaultText_color"
+                                                android:textSize="16sp" />
+
+
+                                        </LinearLayout>
+
+                                        <!--            回复-->
+
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="15dp">
+
+
+                                            <TextView
+                                                android:id="@+id/tv_created_reply"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="10dp"
+                                                android:layout_weight="1"
+                                                android:text="刚刚"
+                                                android:textSize="14sp" />
+
+                                            <ImageView
+                                                android:layout_width="25dp"
+                                                android:layout_height="wrap_content"
+                                                android:scaleType="centerCrop"
+                                                android:src="@drawable/shar_3" />
+
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                        <!--    输入框-->
+                        <!--bottom-->
+
+                    </RelativeLayout>
+                </androidx.core.widget.NestedScrollView>
+
+                <LinearLayout
+                    android:id="@+id/lv_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+
+
+                    <EditText
+                        android:id="@+id/et_input"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/et_shape_input"
+                        android:hint="友善发言是交流的起点"
+                        android:paddingLeft="18dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="18dp"
+                        android:paddingBottom="10dp"
+                        android:textColorHint="@color/defaultText_color"
+                        android:textSize="15sp"
+
+                        />
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/fl_bottom"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+
+                            >
+
+                            <RelativeLayout
+                                android:id="@+id/rl_approve_normal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:visibility="visible">
+
+
+                                <ImageView
+                                    android:id="@+id/iv_norma"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_centerInParent="true"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/ic_grey_thumb_32" />
+
+                                <TextView
+                                    android:id="@+id/tv_total_count_normal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="-5dp"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_toRightOf="@id/iv_norma"
+                                    android:text="1"
+                                    android:textColor="@color/defaultText_color"
+                                    android:textSize="14sp"
+                                    tools:ignore="DuplicateIds" />
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/rl_approve_click"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:visibility="gone">
+
+                                <ImageView
+                                    android:id="@+id/iv_norma_"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_centerInParent="true"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/ic_red_humb_32"
+                                    tools:ignore="DuplicateIds" />
+
+                                <TextView
+                                    android:id="@+id/tv_total_count_click"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="-5dp"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_toRightOf="@+id/iv_norma_"
+                                    android:text="1"
+                                    android:textColor="@color/color_E40700"
+                                    android:textSize="14sp"
+                                    tools:ignore="DuplicateIds" />
+
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/message_2" />
+
+                                <TextView
+                                    android:id="@+id/tv_reply_total_mes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="48dp"
+                                    android:layout_marginTop="-3dp"
+                                    android:text="1"
+                                    android:textColor="@color/defaultText_color"
+                                    android:textSize="14sp" />
+
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+
+                                <ImageView
+                                    android:id="@+id/iv_share"
+                                    android:layout_width="28dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/share_2" />
+
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </RelativeLayout>
+        </com.example.jetpackdemo.custom.ProgressLayout>
+    </LinearLayout>
+</layout>

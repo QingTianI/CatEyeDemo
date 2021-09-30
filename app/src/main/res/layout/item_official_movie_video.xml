@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.jetpackdemo.data.model.bean.VideoPreview.Data" />
+
+        <variable
+            name="presenter"
+            type="com.example.jetpackdemo.ui.adapter.OfficialMovieAdapter.Presenter" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_img"
+                    android:layout_width="150dp"
+                    android:layout_height="90dp"
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/photo"
+                    imageUrl="@{data.img}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/defaultText_color"
+                    android:paddingLeft="7dp"
+                    android:paddingTop="4dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="4dp"
+                    android:text="制作特辑"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dp_10"
+                    android:textStyle="bold"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_isPlaying"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="80dp"
+                    android:text="播放中"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:visibility="@{presenter.isVisibility(data.isSelect)}"/>
+
+                <ImageView
+                    android:id="@+id/iv_play"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_play_64"
+                    android:layout_centerInParent="true" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/tv_tl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="2"
+                tools:text="张译于和伟演绎残酷谍战 《悬崖之上》无名英雄牺牲换黎明"
+                android:text="@{data.tl}"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@{presenter.selectedColor(data.isSelect)}"
+                />
+
+
+        </LinearLayout>
+
+
+        <View
+            style="@style/Function_iv_divider_horizontal"
+            android:layout_marginTop="120dp" />
+
+
+    </RelativeLayout>
+</layout>

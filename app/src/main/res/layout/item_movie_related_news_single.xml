@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.example.jetpackdemo.util.UtilsKt"/>
+        <variable
+            name="data"
+            type="com.example.jetpackdemo.data.model.bean.MovieRelatedNews.News" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/LinearLayout_single_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="10dp">
+
+                        <ImageView
+                            android:id="@+id/iv_url"
+                            android:layout_width="130dp"
+                            android:layout_height="90dp"
+                            android:scaleType="centerCrop"
+                            tools:src="@drawable/photo"
+                            imageUrl="@{data.previewImages[0].url}"/>
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="热血嗨燃过瘾感动，IMAX《速度与激情9》马力全开"
+                        android:text="@{data.title}"
+                        android:textColor="@color/defaultText_color"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="猫眼电影" />
+
+                <TextView
+                    android:id="@+id/tv_viewCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_view_count"
+                    android:drawablePadding="5dp"
+                    tools:text="2179"
+                    android:text="@{UtilsKt.toString(data.viewCount)}"/>
+
+
+                <TextView
+                    android:id="@+id/tv_commentCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:drawableLeft="@drawable/ic_comment"
+                    android:drawablePadding="5dp"
+                    tools:text="0"
+                    android:text="@{UtilsKt.toString(data.commentCount)}"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            style="@style/Function_iv_divider_horizontal"
+            android:layout_marginTop="15dp" />
+
+    </LinearLayout>
+</layout>

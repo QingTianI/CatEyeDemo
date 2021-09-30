@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.jetpackdemo.data.model.bean.MovieTechnicals.Item" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="颜色"
+            android:text="@{data.title}"
+            android:textColor="@color/defaultText_color"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            tools:text="彩色"
+            android:text="@{data.desc}"
+            android:textColor="@color/color_212121"
+            android:textSize="18sp" />
+
+        <View
+            style="@style/Function_iv_divider_horizontal"
+            android:layout_marginTop="15dp" />
+
+    </LinearLayout>
+</layout>

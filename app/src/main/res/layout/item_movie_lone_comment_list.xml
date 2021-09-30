@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.jetpackdemo.util.UtilsKt" />
+
+
+        <variable
+            name="data"
+            type="com.example.jetpackdemo.data.model.bean.MovieLongCommentList.FilmReview" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <RelativeLayout
+                android:id="@+id/rl_follow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_avatarurl"
+                    imageUrl="@{data.author.avatarurl}"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    tools:src="@drawable/photo" />
+
+
+            </RelativeLayout>
+            <!--姓名-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:id="@+id/tv_nickName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{data.author.nickName}"
+                        android:textColor="#000"
+                        android:textSize="16sp"
+                        tools:text="天空之外" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/tv_shape_level"
+                        android:paddingLeft="3dp"
+                        android:paddingTop="2dp"
+                        android:paddingRight="3dp"
+                        android:paddingBottom="2dp">
+
+                        <TextView
+                            android:id="@+id/tv_userLevel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="19dp"
+                            android:text='@{"lv" + data.author.userLevel}'
+                            android:textSize="11sp"
+                            tools:ignore="SmallSp"
+                            tools:text="Lv2" />
+
+                        <ImageView
+                            android:id="@+id/iv_img"
+                            imageUrl="@{UtilsKt.setUserLevel(data.author.userLevel)}"
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="1dp"
+                            tools:src="@drawable/level_2" />
+
+                    </LinearLayout>
+                </LinearLayout>
+                <!--评分-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:id="@+id/lv_level_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{UtilsKt.setLevelVisibility(5 == UtilsKt.toInt(data.sc))}"
+                        tools:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_select" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_select" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_select" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_select" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_select" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lv_level_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{UtilsKt.setLevelVisibility(4 == UtilsKt.toInt(data.sc))}"
+                        tools:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_select" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_select" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_select" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_select" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_unselect" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lv_level_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{UtilsKt.setLevelVisibility(3 == UtilsKt.toInt(data.sc))}"
+                        tools:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_select" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_select" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_select" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_unselect" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_unselect" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lv_level_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{UtilsKt.setLevelVisibility(2 == UtilsKt.toInt(data.sc))}"
+                        tools:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_select" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_select" />
+
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_unselect" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_unselect" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_unselect" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lv_level_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{UtilsKt.setLevelVisibility(1 == UtilsKt.toInt(data.sc))}"
+                        tools:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_select" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_unselect" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_unselect" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_unselect" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/star_unselect" />
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/tv_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text='@{ UtilsKt.toString( data.sc * 2) +"分"}'
+                        android:textColor="@color/color_score"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:text="8分" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@{data.title}"
+                    android:textColor="@color/defaultText_color"
+                    android:textSize="17sp"
+                    tools:text="家人，就是属于自己的哆啦A梦" />
+
+                <TextView
+                    android:id="@+id/tv_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{data.text"
+                    android:textSize="14sp"
+                    tools:text="看《伴我同行》第一部的时候，就感叹于3D版本画面的精美。电影立体的呈现了野比的家、学校、空地等，唯有遗憾没看到后山。因为我看过所有哆啦A梦系列的漫画、动画长篇及短篇系列，那时候还叫机器猫。
+
+《伴我同" />
+
+
+                <!--            回复-->
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+
+                    <LinearLayout
+                        android:id="@+id/lv_reply"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1">
+
+
+                        <TextView
+                            android:id="@+id/tv_created"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:text="5-23"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_viewCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_view_count"
+                            android:drawablePadding="5dp"
+                            android:text="@{UtilsKt.toString(data.viewCount)}"
+                            tools:text="2179" />
+
+
+                        <TextView
+                            android:id="@+id/tv_commentCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:drawableLeft="@drawable/ic_comment"
+                            android:drawablePadding="5dp"
+                            android:text="@{UtilsKt.toString(data.commentCount)}"
+                            tools:text="0" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            style="@style/Function_iv_divider_horizontal"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
+</layout>

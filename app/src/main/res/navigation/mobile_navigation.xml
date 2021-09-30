@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.jetpackdemo.ui.fragment.module.MainFragment"
+        android:label="MainFragment" />
+
+
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.example.jetpackdemo.ui.fragment.module.cinema.MovieDetailFragment"
+        android:label="MovieDetailFragment">
+        <argument
+            android:name="movieId"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_movieDetailFragment_to_movieStarInfoBeanFragment"
+            app:destination="@id/movieStarInfoBeanFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+
+        <action
+            android:id="@+id/action_movieDetailFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_movieDetailFragment_to_movieVideoFragment"
+            app:destination="@id/movieVideoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_movieDetailFragment_to_movieLongCommentListFragment"
+            app:destination="@id/movieLongCommentListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_movieDetailFragment_to_movieRelatedNewsFragment"
+            app:destination="@id/movieRelatedNewsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_movieDetailFragment_to_writeLongCommentFragment"
+            app:destination="@id/writeLongCommentFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_movieDetailFragment_to_movieShortCommentFragment"
+            app:destination="@id/movieShortCommentFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_movieDetailFragment_to_relatedCompanyFragment"
+            app:destination="@id/relatedCompanyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_movieDetailFragment_to_movieTechnicalsFragment"
+            app:destination="@id/movieTechnicalsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_movieDetailFragment_to_movieResourceMusicFragment"
+            app:destination="@id/movieResourceMusicFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_movieDetailFragment_self"
+            app:destination="@id/movieDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+        />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/movieStarInfoBeanFragment"
+        android:name="com.example.jetpackdemo.ui.fragment.module.cinema.MovieStarInfoBeanFragment"
+        android:label="MovieStarInfoBeanFragment">
+        <argument
+            android:name="movieStarId"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_movieStarInfoBeanFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_movieStarInfoBeanFragment_to_movieStarHonorDetailWebViewFragment"
+            app:destination="@id/movieStarHonorDetailWebViewFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_movieStarInfoBeanFragment_to_movieStarDetailFragment"
+            app:destination="@id/movieStarDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_movieStarInfoBeanFragment_self"
+            app:destination="@id/movieStarInfoBeanFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/movieStarHonorDetailWebViewFragment"
+        android:name="com.example.jetpackdemo.ui.fragment.module.cinema.MovieStarHonorDetailWebViewFragment"
+        android:label="MovieStarHonorDetailWebViewFragment">
+
+        <argument
+            android:name="awardUrl"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieStarDetailFragment"
+        android:name="com.example.jetpackdemo.ui.fragment.module.cinema.MovieStarDetailFragment"
+        android:label="MovieStarDetailFragment">
+
+
+        <argument
+            android:name="movieStarInfo"
+            app:argType="com.example.jetpackdemo.data.model.bean.MovieStarInfo" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.example.jetpackdemo.ui.fragment.module.cinema.WebViewFragment"
+        android:label="WebViewFragment ">
+
+        <argument
+            android:name="webViewUrl"
+            app:argType="string" />
+        <argument
+            android:name="movieName"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieVideoFragment"
+        android:name="com.example.jetpackdemo.ui.fragment.module.cinema.MovieVideoFragment"
+        android:label="MovieVideoFragment">
+
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+        <argument
+            android:name="videoPreview_Data"
+            app:argType="com.example.jetpackdemo.data.model.bean.VideoPreview$Data"
+            app:nullable="true" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/movieLongCommentListFragment"
+        android:name="com.example.jetpackdemo.ui.fragment.module.cinema.MovieLongCommentListFragment"
+        android:label="MovieLongCommentListFragment ">
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/movieRelatedNewsFragment"
+        android:name="com.example.jetpackdemo.ui.fragment.module.cinema.MovieRelatedNewsFragment"
+        android:label="MovieRelatedNewsFragment">
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+        <argument
+            android:name="movieName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_movieRelatedNewsFragment_to_webViewNoTitleFragment"
+            app:destination="@id/webViewNoTitleFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/webViewNoTitleFragment"
+        android:name="com.example.jetpackdemo.ui.fragment.module.cinema.WebViewNoTitleFragment"
+        android:label="WebViewNoTitleFragment ">
+
+        <argument
+            android:name="webViewUrl"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/writeLongCommentFragment"
+        android:name="com.example.jetpackdemo.ui.fragment.module.cinema.WriteLongCommentFragment"
+        android:label="WriteLongCommentFragment" />
+
+
+    <fragment
+        android:id="@+id/movieShortCommentFragment"
+        android:name="com.example.jetpackdemo.ui.fragment.module.cinema.MovieShortCommentFragment"
+        android:label=" MovieShortCommentFragment ">
+        <argument
+            android:name="movieName"
+            app:argType="string" />
+        <argument
+            android:name="movieCommentTag_Data"
+            app:argType="com.example.jetpackdemo.data.model.bean.MovieCommentTag$Data[]" />
+        <argument
+            android:name="tag"
+            app:argType="integer" />
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/relatedCompanyFragment"
+        android:name="com.example.jetpackdemo.ui.fragment.module.cinema.RelatedCompanyFragment"
+        android:label="RelatedCompanyFragment">
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieTechnicalsFragment"
+        android:name="com.example.jetpackdemo.ui.fragment.module.cinema.MovieTechnicalsFragment"
+        android:label="MovieTechnicalsFragment">
+
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieResourceMusicFragment"
+        android:name="com.example.jetpackdemo.ui.fragment.module.cinema.MovieResourceMusicFragment"
+        android:label="MovieResourceMusicFragment ">
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_to_movieDetailFragment"
+        app:destination="@id/movieDetailFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+
+    <fragment
+        android:id="@+id/movieStarPhotoFragment"
+        android:name="com.example.jetpackdemo.ui.fragment.module.cinema.MovieStarPhotoFragment"
+        android:label="MovieStarPhotoFragment">
+
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
+
+
+    <action
+        android:id="@+id/action_to_movieVideoFragment"
+        app:destination="@+id/movieVideoFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"/>
+
+    <fragment android:id="@+id/movieStarPhotoDetailsFragment"
+        android:name="com.example.jetpackdemo.ui.fragment.module.cinema.MovieStarPhotoDetailsFragment"
+        android:label="MovieStarPhotoDetailsFragment">
+
+        <argument android:name="movieName"
+            app:argType="string"/>
+        <argument
+            android:name="photos"
+            app:argType="string[]" />
+    </fragment>
+
+    <action android:id="@+id/action_to_movieStarPhotoDetailsFragment"
+        app:destination="@+id/movieStarPhotoDetailsFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"/>
+
+
+</navigation>

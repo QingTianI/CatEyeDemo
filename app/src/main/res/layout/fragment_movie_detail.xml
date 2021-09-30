@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+        <variable
+            name="vm"
+            type="com.example.jetpackdemo.viewmodel.fragment.MovieDetailViewModel" />
+
+        <variable
+            name="presenter"
+            type="com.example.jetpackdemo.helper.PresenterProxyClick"/>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefreshLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--    android:background="@drawable/ic_blur_bg"-->
+                <com.example.jetpackdemo.custom.ProgressLayout
+                    android:id="@+id/progressLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_bg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <androidx.core.widget.NestedScrollView
+                            android:id="@+id/nestedScrollView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fitsSystemWindows="true"
+                                android:orientation="vertical">
+
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <include
+                                        android:id="@+id/no_back_title"
+                                        layout="@layout/include_no_back_title" />
+
+
+                                </FrameLayout>
+
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+
+                                        <androidx.appcompat.widget.LinearLayoutCompat
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:paddingLeft="10dp"
+                                            android:paddingRight="10dp"
+                                            android:paddingBottom="5dp">
+
+                                            <!--   电影基本信息-->
+
+                                            <!--    猫眼评分       -->
+
+                                            <include
+                                                android:id="@+id/layout_movie_basic_info"
+                                                layout="@layout/layout_movie_basic_info"
+                                                bind:presenter="@{presenter}" />
+
+                                            <include
+                                                layout="@layout/layout_movie_score"
+                                                android:id="@+id/layout_movie_score"
+                                                bind:vm="@{vm}"
+                                              />
+
+                                            <!--     猫眼想看-->
+                                            <include
+                                                layout="@layout/layout_movie_wish"
+                                                android:id="@+id/layout_movie_wish"/>
+
+                                            <!--     简介-->
+                                            <include
+                                                android:id="@+id/layout_introduce"
+                                                layout="@layout/layout_introduce" />
+
+                                            <!--     演职人员-->
+                                            <include
+                                                android:id="@+id/layout_movie_star"
+                                                layout="@layout/layout_movie_star"
+                                                bind:vm="@{vm}" />
+
+                                            <!--  剧照  视频-->
+                                            <include
+                                                android:id="@+id/layout_movie_photo"
+                                                layout="@layout/layout_movie_photo" />
+
+                                            <include
+                                                android:id="@+id/layout_movie_detail_title"
+                                                layout="@layout/layout_movie_detail_title"
+                                                bind:presenter="@{presenter}" />
+
+
+                                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/shape_card"
+                                            android:orientation="vertical"
+                                            android:paddingLeft="10dp"
+                                            android:paddingTop="10dp"
+                                            android:paddingRight="10dp">
+
+                                            <!--    观众热评-->
+                                            <include
+                                                android:id="@+id/layout_viewer_comment"
+                                                layout="@layout/layout_viewer_comment" />
+
+                                            <!--热门长评-->
+                                            <include
+                                                android:id="@+id/layout_movie_lone_comment"
+                                                layout="@layout/layout_movie_lone_comment" />
+
+                                            <!--   热门长评全部-->
+
+                                            <include
+                                                android:id="@+id/layout_movie_lone_comment_all"
+                                                layout="@layout/layout_movie_lone_comment_all"
+                                                bind:vm="@{vm}"/>
+
+                                            <!--影片资料-->
+                                            <include
+                                                android:id="@+id/layout_movie_info"
+                                                layout="@layout/layout_movie_info" />
+
+                                            <!--  票房  -->
+                                            <include
+                                                android:id="@+id/layout_boxoffice"
+                                                layout="@layout/layout_boxoffice"
+                                                bind:vm="@{vm}"
+                                                bind:presenter="@{presenter}"/>
+
+                                            <!--  相关快讯  -->
+                                            <include
+                                                android:id="@+id/layout_movie_relate_news"
+                                                layout="@layout/layout_movie_relate_news" />
+
+                                            <!--             喜欢这部影片的人也喜欢          -->
+                                            <include
+                                                android:id="@+id/layout_movie_related_movies"
+                                                layout="@layout/layout_movie_related_movies" />
+
+
+                                        </LinearLayout>
+
+
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+                                </RelativeLayout>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </androidx.core.widget.NestedScrollView>
+                        <!--            特惠购票-->
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/default_divier_line"
+                            android:paddingTop="2dp">
+
+                            <include layout="@layout/layout_buy_ticket" />
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+                </com.example.jetpackdemo.custom.ProgressLayout>
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+</layout>

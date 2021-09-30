@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/header"
+    android:background="@color/white">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:paddingBottom="13dp"
+        android:paddingTop="13dp">
+
+
+        <TextView
+            android:id="@+id/tv_brand"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableRight="@drawable/ic_arrow_down_solid"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="品牌"
+            android:drawablePadding="@dimen/dp_10"
+            android:textColor="@color/defaultText_color"
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:background="@color/default_divier_line" />
+
+
+        <TextView
+            android:id="@+id/tv_whole_city"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableRight="@drawable/ic_arrow_down_solid"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="全城"
+            android:textColor="@color/defaultText_color"
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:background="@color/default_divier_line" />
+
+
+        <TextView
+            android:id="@+id/tv_short_distance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableRight="@drawable/ic_arrow_down_solid"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="距离近"
+            android:textColor="@color/defaultText_color"
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:background="@color/default_divier_line" />
+
+
+        <TextView
+            android:id="@+id/tv_choose"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableRight="@drawable/ic_arrow_down_solid"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:text="筛选"
+            android:textColor="@color/defaultText_color"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:background="@color/default_divier_line"/>
+
+</LinearLayout>

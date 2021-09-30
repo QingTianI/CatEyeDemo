@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#d43e37</color>
+    <color name="colorPrimaryDark">#852623</color>
+    <color name="colorAccent">#d43e37</color>
+
+
+
+
+
+    <color name="color_212121">#212121</color>
+    <color name="color_000">#000</color>
+    <color name="colorWhite">#fff</color>      //白色
+    <color name="transparent">#00000000</color>//透明文字的颜色
+    <color name="color_66666">#666666</color>
+    <color name="default_divier_line">#e0e0e0</color>  //分割线颜色
+    <color name="color_E40700">#E40700</color>
+    <color name="defaultText_color">#424242</color>  //默认文字的颜色
+    <color name="transparent_color">#44ffffff</color>
+    <color name="color_03A9F4">#03A9F4</color>
+    <color name="color_444444">#444444</color>
+    <color name="color_6D6D6D">#6D6D6D</color>
+    <color name="color_EEEDED">#EEEDED</color>
+    <color name="color_F7F6F6">#F7F6F6</color>
+    <color name="color_BDBDBD">#BDBDBD</color>
+    <color name="color_F3F2F2">#F3F2F2</color>
+    <color name="color_64FFFFFF">#64FFFFFF</color>
+    <color name="color_ABA8A8">#ABA8A8</color>
+    <color name="Color_C8C6C6">#C8C6C6</color>
+    <color name="color_score">#FE9F13</color>
+    <color name="divider_normal">#f0f0f0</color>
+
+
+    <color name="color_915C5C">#E6D4D4</color>
+    <color name="color_141414">#141414</color>
+    <color name="color_393939">#393939</color>
+    <color name="color_3E5066">#3E5066</color>
+    <color name="color_grey">#888888</color>
+</resources>

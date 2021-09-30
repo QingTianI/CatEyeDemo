@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.jetpackdemo.util.UtilsKt"/>
+
+        <variable
+            name="data"
+            type="com.example.jetpackdemo.data.model.bean.MovieBasicData.Movie" />
+        <variable
+            name="vm"
+            type="com.example.jetpackdemo.viewmodel.fragment.MovieDetailViewModel" />
+
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/lv_movie_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:cardBackgroundColor="#3f949494"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="猫眼购票评分"
+                        android:textColor="#fff"
+                        android:textSize="13sp"
+                        android:textStyle="italic" />
+
+
+                    <TextView
+                        android:id="@+id/tv_wish"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        tools:text="0000"
+                        android:text="@{UtilsKt.countWatchedAndWishCount(data.wish)}"
+                        android:textColor="@color/Color_C8C6C6"
+                        android:textSize="12sp"
+                     />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="人想看"
+                        android:textColor="@color/Color_C8C6C6"
+                        android:textSize="12sp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_watched"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        tools:text="0000"
+                        android:text="@{UtilsKt.countWatchedAndWishCount(data.watched)}"
+                        android:textColor="@color/Color_C8C6C6"
+                        android:textSize="12sp"
+                  />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_weight="1"
+                        android:text="人看过"
+                        android:textColor="@color/Color_C8C6C6"
+                        android:textSize="12sp" />
+
+
+                    <ImageView
+                        android:layout_width="7dp"
+                        android:layout_height="14dp"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/ic_arrow_right_big" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="50dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_sc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="7.6"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@{UtilsKt.toString(data.sc)}"
+                            android:textColor="@color/color_score"
+                            android:textSize="25sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="332,449人评"
+                            android:textColor="@color/Color_C8C6C6"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="4dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_grey_star_32" />
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_grey_star_32" />
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_grey_star_32" />
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_grey_star_32" />
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_grey_star_32" />
+                            <!--进度条-->
+                            <!--  9-10分 -->
+                            <ProgressBar
+                                android:id="@+id/movieScoreLevel_height"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:layout_width="100dp"
+                                android:layout_height="5dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:background="#fff"
+                                android:max="100"
+                                android:maxHeight="6dp"
+
+                                android:minHeight="6dp"
+                                android:progressDrawable="@drawable/pb_pd_sp_download" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp">
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_grey_star_32" />
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_grey_star_32" />
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_grey_star_32" />
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_grey_star_32" />
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/ic_black_star_32" />
+
+                            <!--进度条-->
+                            <!--  5-8分 -->
+
+                            <ProgressBar
+                                android:id="@+id/movieScoreLevel_middle"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:layout_width="100dp"
+                                android:layout_height="5dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:background="#fff"
+                                android:max="100"
+                                android:maxHeight="6dp"
+                                android:minHeight="6dp"
+                                android:progressDrawable="@drawable/pb_pd_sp_download" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp">
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_grey_star_32" />
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/ic_grey_star_32" />
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_black_star_32" />
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_black_star_32" />
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_black_star_32" />
+
+                            <!--进度条-->
+                            <!--  1-4分 -->
+                            <ProgressBar
+                                android:id="@+id/movieScoreLevel_low"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:layout_width="100dp"
+                                android:layout_height="5dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:background="#fff"
+                                android:max="100"
+                                android:maxHeight="6dp"
+                                android:minHeight="6dp"
+                                android:progressDrawable="@drawable/pb_pd_sp_download" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+</layout>

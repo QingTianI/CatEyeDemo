@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.jetpackdemo.util.UtilsKt" />
+
+        <variable
+            name="data"
+            type="com.example.jetpackdemo.data.model.bean.RelatedMovies.Item" />
+
+        <variable
+            name="presenter"
+            type="com.example.jetpackdemo.ui.adapter.RelatedMoviesAdapter.Presenter" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="10dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="95dp"
+            android:layout_height="150dp"
+            app:cardCornerRadius="10dp">
+
+            <ImageView
+                android:id="@+id/iv_img"
+                imageUrl="@{UtilsKt.resetPicUrl(data.img)}"
+                android:layout_width="95dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/photo" />
+
+            <TextView
+                android:id="@+id/tv_sc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="130dp"
+                android:textColor="#FFC107"
+                android:textSize="12sp"
+                tools:text="6 评分"
+                android:text="@{presenter.sc(data.sc)}"/>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cardView"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{data.title}"
+            android:textColor="@color/defaultText_color"
+            android:textSize="15sp"
+            tools:text="速度与激情7"
+
+            />
+
+    </RelativeLayout>
+</layout>

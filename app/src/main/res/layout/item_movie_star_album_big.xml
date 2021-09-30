@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.example.jetpackdemo.util.UtilsKt"/>
+        <variable
+            name="data"
+            type="com.example.jetpackdemo.data.model.bean.Album" />
+
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="200dp"
+            android:layout_height="130dp"
+            tools:src="@drawable/photo"
+            imageUrl="@{UtilsKt.resetPicUrl(data.bigPhoto)}"
+            android:scaleType="centerCrop" />
+
+    </LinearLayout>
+</layout>
